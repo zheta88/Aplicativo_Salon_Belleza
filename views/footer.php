@@ -1,1 +1,0 @@
-<div id="footer" style="text-align:center;">© Derechos Reservados 2020 ||<a href="https://electricidadelectronicaytelecomu.blogspot.com/">SENA CEET</a></div> 
