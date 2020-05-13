@@ -1,6 +1,6 @@
 <?php
 
-define('URL', 'http://localhost/salon2-master/');
+define('URL', 'https://projectsalon.herokuapp.com/');
 
 define('HOST', 'localhost');
 define('DB', 'salon3');
