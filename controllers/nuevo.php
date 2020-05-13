@@ -2,33 +2,32 @@
 
 class Nuevo extends Controller{
 
+
     function __construct(){
         parent::__construct();
-        $this->view->mensaje = "";
-        $this->view->render('nuevo/index'); 
-   
+        $this->view->mensaje="";
+        
     }
 
     function render(){
-       // $this->view->render('nuevo/index');
+        $this->view->render('nuevo/index');
     }
 
-    function registrar(){
-        $cedula = $_POST['cedula'];
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
+    function crear(){
+        $matricula = $_POST['matricula'];
+        $nombre    = $_POST['nombre'];
+        $apellido  = $_POST['apellido'];
 
-        $mensaje = "";
-
-        if($this->model->insert(['cedula'=>$cedula,'nombre'=>$nombre,'apellido'=>$apellido])){
-            $mensaje="Nuevo registro creado";
+        if($this->model->insert(['matricula' => $matricula, 'nombre' => $nombre, 'apellido' => $apellido])){
+            //header('location: '.constant('URL').'nuevo/alumnoCreado');
+            $this->view->mensaje = "Alumno creado correctamente";
+            $this->view->render('nuevo/index');
         }else{
-            $mensaje="registro ya existe";
+            $this->view->mensaje = "La matrícula ya está registrada";
+            $this->view->render('nuevo/index');
         }
-
-        $this->view->mensaje=$mensaje;
-        $this->render();
     }
+
 }
 
 ?>
