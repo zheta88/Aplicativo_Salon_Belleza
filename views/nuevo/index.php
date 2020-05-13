@@ -1,3 +1,4 @@
+<?include "models/nuevomodel.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,13 +23,58 @@
                             <img src="public/image/registro.jpg" class="avatar" alt="">
 							<h2>Registro</h2>
                             <form action="<?php echo constant('URL'); ?>nuevo/crear" method="POST">
-                                <label for="">Matrícula</label><br>
-                                <input type="text" name="matricula" id=""><br>
-                                <label for="">Nombre</label><br>
-                                <input type="text" name="nombre" id=""><br>
-                                <label for="">Apellido</label><br>
-                                <input type="text" name="apellido" id=""><br>
-                                <input type="submit" value="Crear nuevo alumno">
+                            <div class="form-group">									
+									<input type="text" class="form-control input-lg" name="Cedula" placeholder="cedula" required>        
+								</div> 
+                         	
+								<div class="form-group">									
+                            
+									   <?php
+										 $nuevomodel=new nuevomodel();
+										 $opcionesRoles= $nuevomodel->getroles(); 
+										//	 var_dump($opcionesRoles); 
+									 
+									 ?>
+
+                                        <select name="ROL_idROL" id="inputState" class="form-control">
+										
+                                            <option selected>Elige Rol...</option>
+											<?php foreach ($opcionesRoles as $elemento){
+                                            echo '<option value="'.$elemento['idROL'].'">'.$elemento['NOMBRE_ROL'].'</option>';
+											 }?>
+                                           
+
+
+                                        </select>
+                                        </div>        
+								</div> 
+                         	
+								<div class="form-group">									
+									<input type="text" class="form-control input-lg" name="Nombre" placeholder="Nombres" required>        
+								</div>							
+								<div class="form-group">        
+									<input type="text" class="form-control input-lg" name="Apellidos" placeholder="Apellidos" required>       
+								</div>
+								<div class="form-group">									
+									<input type="text" class="form-control input-lg" name="Celular" placeholder="Celular" required>        
+								</div> 
+                         	
+								<div class="form-group">									
+									<input type="text" class="form-control input-lg" name="Direccion" placeholder="Direccion" required>        
+								</div> 
+                         	
+								<div class="form-group">									
+									<input type="email" class="form-control input-lg" name="Correo" placeholder="E-mail" required>        
+								</div>	
+								<div class="form-group">									
+									<input type="text" class="form-control input-lg" name="Usuario" placeholder="Usuario" required>        
+								</div>						
+								<div class="form-group">        
+									<input type="password" class="form-control input-lg" name="Contrasena" placeholder="Contraseña" required>       
+								</div>
+								<div class="boton">							    
+									<button type="submit" class="btn btn-success btn-block">Registrar</button>
+								</div>
                             </form>
                         </div>
                     </div>

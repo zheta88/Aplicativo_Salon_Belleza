@@ -2,15 +2,15 @@ const items = document.querySelectorAll(".bEliminar");
 
 items.forEach(item => {
     item.addEventListener("click", function(){
-        const matricula = this.dataset.matricula;
+        const Cedula = this.dataset.cedula;
 
-        const confirm = window.confirm("Deseas eliminar el elemento?");
+        const confirm = window.confirm("Desea eliminar el registro?");
 
         if(confirm){
-            httpRequest("http://localhost/curso/43.%20MVC-02/consulta/eliminarAlumno/" + matricula, function(e){
+            httpRequest("http://localhost/Salon2-master/consulta/eliminarPersona/" +Cedula, function(e){
                 console.log(this.responseText);
-                const tbody = document.querySelector("#tbody-alumnos");
-                const fila  = document.querySelector("#fila-" + matricula);
+                const tbody = document.querySelector("#tbody-personas");
+                const fila  = document.querySelector("#fila-" + Cedula);
                 tbody.removeChild(fila);
             })
         }

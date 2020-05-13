@@ -10,22 +10,31 @@ class Nuevo extends Controller{
     }
 
     function render(){
+       
         $this->view->render('nuevo/index');
     }
 
     function crear(){
-        $matricula = $_POST['matricula'];
-        $nombre    = $_POST['nombre'];
-        $apellido  = $_POST['apellido'];
+        $ROL_idROL=$_POST['ROL_idROL'];
+        $Cedula = $_POST['Cedula'];
+        $Nombre    = $_POST['Nombre'];
+        $Apellidos  = $_POST['Apellidos'];
+        $Celular =$_POST['Celular'];
+        $Direccion=$_POST['Direccion'];
+        $Correo=$_POST['Correo'];
+        $usuario=$_POST['Usuario'];
+        $Contrasena=md5($_POST['Contrasena']);
 
-        if($this->model->insert(['matricula' => $matricula, 'nombre' => $nombre, 'apellido' => $apellido])){
-            //header('location: '.constant('URL').'nuevo/alumnoCreado');
-            $this->view->mensaje = "Alumno creado correctamente";
+
+        if($this->model->insert(['ROL_idROL'=>$ROL_idROL,'Cedula' =>$Cedula, 'Nombre' =>$Nombre, 'Apellidos' =>$Apellidos , 'Celular' =>$Celular, 'Direccion'=>$Direccion ,'Correo'=>$Correo, 'Usuario'=>$usuario,'Contrasena'=>$Contrasena])){
+ 
+            $this->view->mensaje = "Registro creado correctamente";
             $this->view->render('nuevo/index');
         }else{
-            $this->view->mensaje = "La matrícula ya está registrada";
+            $this->view->mensaje = "Persona ya está registrada";
             $this->view->render('nuevo/index');
         }
+
     }
 
 }

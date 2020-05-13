@@ -10,21 +10,39 @@
 <body>
 
     <?php require 'views/header.php'; ?>
-
+<div class="container-fluid" style="text-align:center;">
     <div id="main">
         <div><?php echo $this->mensaje; ?></div>
-        <h1 class="center">Actualizar <?php echo $this->alumno->matricula; ?></h1>
+        <h1 class="center">Actualizar <?php echo $this->persona->Cedula; ?></h1>
 
-        <form action="<?php echo constant('URL'); ?>consulta/actualizarAlumno/" method="POST">
-            <label for="">Matrícula</label><br>
-            <input type="text" disabled name="matricula" id="" value="<?php echo $this->alumno->matricula; ?>"><br>
+        <form action="<?php echo constant('URL'); ?>consulta/actualizarPersona/" method="POST">
+            <label for="">ROL</label><br>
+            <input type="text" name="ROL_idROL" value="<?php echo $this->persona->ROL_idROL; ?>"><br>
+            <label for="">Cedula</label><br>
+            <input type="text" disabled name="Cedula" id="" value="<?php echo $this->persona->Cedula; ?>"><br>
             <label for="">Nombre</label><br>
-            <input type="text" name="nombre" value="<?php echo $this->alumno->nombre; ?>"><br>
+            <input type="text" name="Nombre" value="<?php echo $this->persona->Nombre; ?>"><br>
             <label for="">Apellido</label><br>
-            <input type="text" name="apellido" value="<?php echo $this->alumno->apellido; ?>"><br>
-            <input type="submit" value="Crear nuevo alumno">
+            <input type="text" name="Apellidos" value="<?php echo $this->persona->Apellidos; ?>"><br>
+            <label for="">Celular</label><br>
+            <input type="text" name="Celular" value="<?php echo $this->persona->Celular; ?>"><br>
+            <label for="">Direccion</label><br>
+            <input type="text" name="Direccion" value="<?php echo $this->persona->Direccion; ?>"><br>
+            <label for="">Correo</label><br>
+            <input type="text" name="Correo" value="<?php echo $this->persona->Correo; ?>"><br>
+            <label for="">Usuario</label><br>
+            <input type="text" name="Usuario" value="<?php echo $this->persona->Usuario; ?>"><br>
+            <label for="">Contrasena</label><br>
+            <input type="password" name="Contrasena" value="<?php echo $this->persona->Contrasena; ?>"><br>
+            
+            <input type="submit" value="Actualizar registro">
+        
         </form>
+        <div class="boton_consulta">
+        <input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'consulta'?>'" value="volver a consulta"/>
+        </div>
     </div>
+ </div>
 
     <?php require 'views/footer.php'; ?>
     

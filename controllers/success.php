@@ -8,8 +8,8 @@ class Success extends Controller{
         //echo "Error al cargar el recurso";
     }
 
-    function nuevoAlumno(){
-        $this->view->mensaje = "Nuevo alumno creado correctamente";
+    function nuevoPersona(){
+        $this->view->mensaje = "Nuevo persona creado correctamente";
         $this->view->render('success/index');
     }
 }

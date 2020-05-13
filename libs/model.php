@@ -1,13 +1,11 @@
 <?php
 
-class Model {
+class Model{
 
     function __construct(){
-        $this->db=new Database();
-
-        
+        //echo "<p>Modelo principal</p>";
+        $this->db = new Database();
     }
 }
-
 
 ?>

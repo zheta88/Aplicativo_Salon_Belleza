@@ -67,7 +67,7 @@ background:url(../image/b1.jpg) no-repeat center fixed;
   }
   .registro{
       margin-top: 10px;
-        background-color:cadetblue;
+      background-color:cadetblue;
   }
  
   a{
@@ -84,4 +84,25 @@ background:url(../image/b1.jpg) no-repeat center fixed;
 
    .tablapersonas{
       border-color: hotpink;
+   }
+
+   .input-group.mb-3{
+
+    width: 80%;
+    position:relative;
+    left: 42px;
+
+   }
+   .custom-select{
+    width: 200%;
+    position:relative;
+    left: 42px;
+
+
+   }
+   #inputGroupSelect02{
+    width: 80%;
+    position:relative;
+    left: 42px;
+
    }

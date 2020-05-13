@@ -1,6 +1,6 @@
 <?php
 
-require 'models/alumno.php';
+require 'models/persona.php';
 
 class ConsultaModel extends Model{
 
@@ -11,13 +11,20 @@ class ConsultaModel extends Model{
     public function get(){
         $items = [];
         try{
-            $query = $this->db->connect()->query('SELECT * FROM alumnos');
+            $query = $this->db->connect()->query('SELECT * FROM personas');
             
             while($row = $query->fetch()){
-                $item = new Alumno();
-                $item->matricula = $row['matricula'];
-                $item->nombre    = $row['nombre'];
-                $item->apellido  = $row['apellido'];
+                $item = new Persona();
+                $item->ROL_idROL =$row['ROL_idROL'];
+                $item->Cedula = $row['Cedula'];
+                $item->Nombre    = $row['Nombre'];
+                $item->Apellidos  = $row['Apellidos'];
+                $item->Celular =$row ['Celular'];
+                $item->Direccion =$row['Direccion'];
+                $item->Correo =$row['Correo'];
+                $item->Usuario =$row['Usuario'];
+                $item->Contrasena=$row['Contrasena'];
+               
 
                 array_push($items, $item);
             }
@@ -28,17 +35,23 @@ class ConsultaModel extends Model{
     }
 
     public function getById($id){
-        $item = new Alumno();
+        $item = new Persona();
         try{
-            $query = $this->db->connect()->prepare('SELECT * FROM alumnos WHERE matricula = :id');
+            $query = $this->db->connect()->prepare('SELECT * FROM personas WHERE Cedula = :id');
 
             $query->execute(['id' => $id]);
             
             while($row = $query->fetch()){
+                $item->ROL_idROL =$row['ROL_idROL'];
+                $item->Cedula = $row['Cedula'];
+                $item->Nombre    = $row['Nombre'];
+                $item->Apellidos  = $row['Apellidos'];
+                $item->Celular =$row['Celular'];
+                $item->Direccion =$row['Direccion'];
+                $item->Correo =$row['Correo'];
+                $item->Usuario=$row['Usuario'];
+                $item->Contrasena =$row['Contrasena'];
                 
-                $item->matricula = $row['matricula'];
-                $item->nombre    = $row['nombre'];
-                $item->apellido  = $row['apellido'];
             }
             return $item;
         }catch(PDOException $e){
@@ -47,12 +60,19 @@ class ConsultaModel extends Model{
     }
 
     public function update($item){
-        $query = $this->db->connect()->prepare('UPDATE alumnos SET nombre = :nombre, apellido = :apellido WHERE matricula = :matricula');
+        $query = $this->db->connect()->prepare('UPDATE personas SET ROL_idROL=:ROL_idROL,Nombre = :Nombre, Apellidos = :Apellidos, Celular =:Celular, Direccion = :Direccion, Correo = :Correo,Usuario =:Usuario, Contrasena = :Contrasena  WHERE Cedula = :Cedula');
         try{
             $query->execute([
-                'matricula' => $item['matricula'],
-                'nombre' => $item['nombre'],
-                'apellido' => $item['apellido']
+                'ROL_idROL'=>$item ['ROL_idROL'],
+                'Cedula' => $item['Cedula'],
+                'Nombre' => $item['Nombre'],
+                'Apellidos' => $item['Apellidos'],
+                'Celular' =>$item['Celular'],
+                'Direccion' =>$item ['Direccion'],
+                'Correo' =>$item ['Correo'],
+                'Usuario' =>$item ['Usuario'],
+                'Contrasena'=>$item ['Contrasena']              
+                
             ]);
             return true;
         }catch(PDOException $e){
@@ -61,15 +81,19 @@ class ConsultaModel extends Model{
     }
 
     public function delete($id){
-        $query = $this->db->connect()->prepare('DELETE FROM alumnos WHERE matricula = :matricula');
+        
+        $query = $this->db->connect()->prepare('DELETE FROM personas WHERE Cedula = :Cedula');
         try{
             $query->execute([
-                'matricula' => $id
+                'Cedula' => $id
             ]);
             return true;
         }catch(PDOException $e){
+          
             return false;
         }
     }
+
+  
 }
 ?>
